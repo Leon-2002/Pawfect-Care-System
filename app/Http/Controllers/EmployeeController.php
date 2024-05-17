@@ -50,17 +50,35 @@ class EmployeeController extends Controller
 
 
     
+// public function showProfile($id)
+// {
+//     // Fetch the service provider details based on the $id
+//     $user = User::findOrFail($id);
+
+//     // fetch the review data
+//     // $reviews = Review::where('UserID', $id)->with('user')->get();
+
+
+//     $reviews = $user->reviews; 
+//     // Pass the data to the view
+//     return view('user.service_profile', compact('user', 'reviews'));
+// }
+
 public function showProfile($id)
 {
     // Fetch the service provider details based on the $id
     $user = User::findOrFail($id);
 
-    // fetch the review data
-    // $reviews = Review::where('UserID', $id)->with('user')->get();
+    // Fetch the associated reviews using the relationship defined in the User model
+    // $reviews = $user->reviews;
+    $reviews = Review::where('EmployeeID', $id)->paginate(2);
 
+    $totalReviewsCount = Review::where('EmployeeID', $id)->count();
+    
 
-    $reviews = $user->reviews; 
     // Pass the data to the view
-    return view('user.service_profile', compact('user', 'reviews'));
+    return view('user.service_profile', compact('user', 'reviews', 'totalReviewsCount'));
 }
+
+
 }

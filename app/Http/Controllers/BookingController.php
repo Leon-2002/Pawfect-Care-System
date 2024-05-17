@@ -135,7 +135,7 @@ class BookingController extends Controller
         return view('employee.customer')->with('employeeBookings', $bookingsInCity);
     }
 
-//     public function selectWorker($BookingID)
+//     public function selectProvider($BookingID)
 //     {
 //         // Retrieve the booking
 //         $booking = Bookings::findOrFail($BookingID);
@@ -150,7 +150,6 @@ class BookingController extends Controller
 //         return view('user.service', compact('availableWorkers', 'booking'));
 //     }
 
-    
 
 //     public function confirmBooking(Request $request)
 // {

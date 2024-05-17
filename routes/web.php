@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PersonalBooking;
 use App\Models\User;
 use App\Http\Controllers\ProfileUser;
 use Illuminate\Support\Facades\Route;
@@ -165,6 +166,12 @@ Route::get('/user/recent-Activity', [UserController::class, 'UserActivity'])->na
 Route::post('/user/recent-Activity/review', [BookingController::class, 'reviewstore'])->name('review.store');
 
 Route::get('/service-providers/{id}', [EmployeeController::class, 'showProfile'])->name('service-provider.profile');
+
+
+    // Personal Booking
+
+    Route::get('/user/personalBooking', [PersonalBooking::class, 'getRandomEmployees'])->name('employee.list');
+
 });
 
 

@@ -26,4 +26,10 @@ class Review extends Model
     {
         return $this->belongsTo(User::class, 'id');
     }
+
+
+    public function employee()
+    {
+        return $this->belongsTo(User::class, 'UserID');
+    }
 }

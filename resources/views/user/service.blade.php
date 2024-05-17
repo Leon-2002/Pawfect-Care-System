@@ -52,7 +52,7 @@
                             <h3>No service provider has accepted your booking request.</h3>
                         @else
                             @foreach($acceptedBookings as $booking)
-                                <div class="candidate-list-box card mt-4">
+                                <div class="candidate-list-box card mt-4" style="border-radius: 20px;">
                                     <div class="p-4 card-body">
                                         <div class="align-items-center row">
                                             <div class="col-auto">

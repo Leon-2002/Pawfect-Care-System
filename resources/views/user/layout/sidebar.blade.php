@@ -90,10 +90,12 @@
             <div class="list-group list-group-flush my-3">
                 <a href="{{asset('/dashboard')}}" class=" list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-tachometer-alt me-2"></i>Home</a>
+                <a href="/user/personalBooking" class=" list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-tachometer-alt me-2"></i>Select Provider</a>
                 <a href="/user/service" class=" list-group-item list-group-item-action bg-transparent second-text fw-bold "><i
                         class="fas fa-project-diagram me-2"></i>Service Provider</a>
                         <a href="/user/bookings" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                            class="fas fa-book me-2"></i>book</a>
+                            class="fas fa-book me-2"></i> Random booking</a>
                 <a href="/user/recent-Activity" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                 class="fas fa-history me-2"></i>Recent Activity</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i

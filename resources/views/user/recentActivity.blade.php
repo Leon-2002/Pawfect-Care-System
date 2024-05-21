@@ -228,6 +228,8 @@
                                             <td><span class="badge bg-danger">Canceled</span></td>
                                         @elseif($activity->status == "Accepted")
                                             <td><span class="badge bg-warning text-dark">In Progress</span></td>
+                                        @elseif($activity->status == "rejected")
+                                            <td><span class="badge bg-danger text-white">rejected</span></td>
                                         @else
                                             <td><span class="badge bg-success">{{ $activity->status }}</span></td>
                                         @endif

@@ -9,13 +9,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="/template dashboard/styles.css" />
-    <title>Bootstap 5 Responsive Admin Dashboard</title>
+    <title>Tempaw Care</title>
 
+    
 
     
     <!-- Icon Font Stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     @notifyCss
 </head>
 <style>
@@ -29,8 +31,38 @@
 }
 
 
+/*for personal and random card*/
+body{
+    background: #eee;
+}
+span{
+    font-size:20px;
+}
+
+.box{
+    padding:60px 0px;
+}
+
+.box-part{
+    background:#FFF;
+    border-radius: 20px;
+    padding:60px 10px;
+    margin:30px 0px;
+}
+.text{
+    margin:20px 0px;
+}
+
+.title{
+    font-size: 30px;
+}
+.fa{
+     color:#20a151;
+}
+
 </style>
 <body>
+    
     
     <div class="d-flex" id="wrapper">
         @include('user.layout.sidebar')
@@ -50,14 +82,77 @@
              
           <x-notify::notify />
           @notifyJs
+
+
+
+                          
+
+        <div class="box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+               
+                        <div class="box-part text-center">
+                            
+                            <i class="fa fa-book fa-4x m-3" aria-hidden="true"></i>
+                            
+                            <div class="title">
+                                <h2>Personal Booking</h2>
+                            </div>
+                            
+                            <div class="text">
+                                <span>Ensure your pet receives personalized, top-notch care with personal booking. Tailored to your pet's specific needs, it's the best choice for peace of mind.  </span>
+                            </div>
+                            
+                            <a href="/user/personalBooking"><button class="btn btn-outline-success">Book now</button></a>
+                            
+                         </div>
+                    </div>	 
+                    
+                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                   
+                        <div class="box-part text-center">
+                            
+                            
+                            <i class=" fa fa-solid fa-magnifying-glass fa-4x m-3" aria-hidden="true"></i>
+                        
+                            <div class="title">
+                                <h4>Random Booking</h4>
+                            </div>
+                            
+                            <div class="text">
+                                <span>Embrace the thrill of the unexpected with random booking, where every pet care experience is a new adventure.  It's the best choice for someone who can't decide!</span>
+                            </div>
+                            
+                            
+                            <a href="/user/bookings"><button class="btn btn-outline-success">Book now</button></a>
+                            
+                         </div>
+                    </div>	 
+                </div>
+            </div>
+        </div>
+      
+
+
+
+
+
+
+
+
+
                 
                 <!-- Services Start -->
         <div class="container-fluid py-5">
             <div class="container">
-                <div class="border-start border-5 border-danger ps-5 mb-5" style="max-width: 600px;">
-                    <h6 class="text-danger text-uppercase">Services</h6>
-                    <h1 class="display-5 text-uppercase mb-0">Our Excellent Pet Care Services</h1>
+                <div class="d-flex justify-content-center align-items-center"   >
+                    <div class="border-start border-5 ps-5 mb-5" style="max-width: 600px; border-color: transparent;">
+                        <h6 class="text-danger text-uppercase">Services</h6>
+                        <h1 class="display-5 text-uppercase mb-0">Our Excellent Pet Care Services</h1>
+                    </div>
                 </div>
+                
                 <div class="row g-5">
                     <div class="col-md-6">
                         <div class="service-item bg-light d-flex p-4">
@@ -118,9 +213,6 @@
             </div>
         </div>
         <!-- Services End -->
-                
-
-
       
     <!-- /#page-content-wrapper -->
     </div>

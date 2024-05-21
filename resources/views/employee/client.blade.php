@@ -50,7 +50,7 @@
                             <h3 style="text-align: center">No customer. Find clients in the customer section.</h3>
                         @else
                             @foreach($acceptedBookings as $booking)
-                                <div class="candidate-list-box card mt-4">
+                                <div class="candidate-list-box card mt-4" style="border-radius: 20px">
                                     <div class="p-4 card-body">
                                         <div class="align-items-center row">
                                             <div class="col-auto">
@@ -138,7 +138,7 @@
                                                 <p class="text-muted">{{ $booking->users->email }}</p>
                                             </div>
                                         </div>
-                                        <div class="row pt-1">
+                                        {{-- <div class="row pt-1">
                                             <div class="col-6 mb-3">
                                                 <h6>Service Type</h6>
                                                <p class="text-muted">{{ $booking->serviceProvider->serviceType}} </p>
@@ -146,7 +146,7 @@
                                             <div class="col-6 mb-3">
                                                 <h6>Description</h6>
                                                 <p class="text-muted">{{ $booking->serviceProvider->description }}</p>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <h6><b>Booking Information</b></h6>
                                         <hr class="mt-0 mb-4">

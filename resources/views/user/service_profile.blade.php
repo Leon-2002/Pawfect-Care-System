@@ -33,7 +33,7 @@
 <body>
   <style>
     body{
-    margin-top:20px;
+    
     background:#eee;
 }
 @media (min-width: 0) {
@@ -106,11 +106,188 @@
                               <p class="text-secondary mb-1">{{$user->serviceType}}</p>
                               <p class="text-muted font-size-sm"> {{$user->barangay}} {{$user->city}}, {{$user->province}}</p>
                               {{-- <a href="/user/service/booking"><button class="btn btn-primary">Book Now</button></a> --}}
+
+                              {{-- <a class="btn btn-primary" data-mdb-modal-init data-mdb-target="#bookmodal" data-mdb-button-init data-mdb-ripple-init">
+                                Book now
+                              </a> --}}
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookmodal">
+                                Book now
+                              </button>
                               <button class="btn btn-outline-primary">Message</button>
                             </div>
                           </div>
                         </div>
                       </div>
+
+
+                              <!-- Modal -->
+           <div class="modal fade" id="bookmodal" tabindex="-1" aria-labelledby="bookmodalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg d-flex justify-content-center" >
+              <div class="modal-content w-100">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="bookmodalLabel"> Book a service </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                  <form method="POST" action="{{ route('booking.request') }}">
+                    @csrf
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-outline mb-5">
+                          <label class="form-label" for="name2">Service Provider</label>
+                          <input type="text" id="name2" class="form-control" value="{{$user->name}}" readonly/>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="email2">Email address</label>
+                      <input type="email" id="email2" class="form-control" value="{{$user->email}}" readonly />
+                    </div>
+                      </div>
+
+                    </div>
+                    
+
+                    <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group mb-3">
+                               {{-- for user Id --}}
+                               <input type="hidden"  name="UserID" id="UserID" value="{{Auth::user()->id}}" required>
+                                  {{-- for service provider Id --}}
+                               <input type="hidden"  name="EmployeeID" id="EmployeeID" value="{{$user->id}}" required>
+      
+                              <label for="weight">Weight of Pet </label>
+                              <select class="form-control"  name="petWeight" id="petWeight" required>
+                                  <option value="10">5kg - 10kg</option>
+                                  <option value="25">11kg - 25kg</option>
+                                  <option value="40">25kg - 40kg</option>
+                                  <option value="20">41kg - 50kg</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group mb-3">
+                              <label>Service Type</label>
+                              <div>
+                                  @foreach(['pet boarding', 'pet sitting', 'pet grooming', 'pet healthcare', 'pet training'] as $serviceType)
+                                      <label>
+                                          <input type="checkbox" name="serviceTypes[]" value="{{ $serviceType }}">
+                                          {{ ucwords(str_replace('_', ' ', $serviceType)) }}
+                                      </label><br>
+                                  @endforeach
+                              </div>
+                          </div>
+                      </div>
+      
+      
+                      
+                  </div>
+
+                    <div class="row">
+                
+                      <div class="col-md-6">
+                          <div class="form-group mb-3">
+                              <label for="StartTime">Date Start</label>
+                              <input type="date" class="form-control" name= "StartTime" id="StartTime" required>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group mb-3">
+                              <label for="EndTime">Date End</label>
+                              <input type="date" class="form-control" name= "EndTime" id="EndTime" required>
+                          </div>
+                      </div>
+                  </div>
+          
+                    <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group mb-3">
+                              <label for="petType">Pet Type</label>
+                              <select class="form-control" name="petType" id="petType" required>
+                                  <option value="dog">Dog</option>
+                                  <option value="cat">Cat</option>
+                                  <option value="hamster">Hamster</option>
+                                  <option value="parrot">Parrot</option>
+                                  <option value="rabbit">Rabbit</option>
+                                  <option value="fish">Fish</option>
+                                  <option value="turtle">Turtle</option>
+                                  <option value="guinea_pig">Guinea Pig</option>
+                                  <option value="snake">Snake</option>
+                                  <option value="ferret">Ferret</option>
+                                  <option value="bird">Bird</option>
+                                  <option value="horse">Horse</option>
+                                  <option value="mouse">Mouse</option>
+                                  <option value="lizard">Lizard</option>
+                                  <!-- Add more animals as needed -->
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <label for="displayAmount">Booking Amount</label>
+                          <input type="text" id="displayAmount" class="form-control" readonly>
+                      </div>
+                  </div>
+                  
+
+                  <h3> Location</h3>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group mb-3">
+                        <label for="startDate">Region</label>
+                        <input type="text" class="form-control" name="region" id="region" value="{{auth::user()->region}}" required>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group mb-3">
+                        <label for="startDate">Province</label>
+                        <input type="text" class="form-control" name="province" id="province" value="{{auth::user()->province}}" required>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-lg-6">
+                      <div class="form-group mb-3">
+                        <label for="startDate">City/Municipality</label>
+                        <input type="text" class="form-control"  name="city" id="city" value="{{auth::user()->city}}" required>
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group mb-3">
+                        <label for="startDate">Barangay</label>
+                        <input type="text" class="form-control" name="barangay" id="barangay" value="{{auth::user()->barangay}}"required>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group mb-3">
+                            <label for="comments">Additional Comments</label>
+                            <textarea class="form-control" name="comments" id="comments" rows="3"></textarea>
+                        </div>
+                    </div>
+                    </div>
+
+
+                  <hr>  
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block"> Book now</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+
+
+
+
                       <div class="card mt-3">
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -205,7 +382,7 @@
 
                     </div>
                   </div>
-                  <H2>Reviews({{ $totalReviewsCount}})   ⭐</H2>
+                  <H2 style="margin-top: 20px">Reviews({{ $totalReviewsCount}})   ⭐</H2>
                 </div>
                 
                 @foreach ($reviews as $review)
@@ -216,8 +393,8 @@
                                 <div class="g-mb-15">
                                     <div style="display: flex; align-items: center">
                                         <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
-                                        <h5 class="h5 g-color-gray-dark-v1 mb-0">{{$review->employee->name}}</h5>
-                                        <span class="g-color-black-dark-v5 g-font-size-24">{{ $review->star_rating }}⭐</span>
+                                        <h5 class="h5 g-color-gray-dark-v1 mb-0" style="font-size: 22px;">{{$review->employee->name}}</h5>
+                                        <span class="g-color-black-dark-v5 g-font-size-24" style="margin-left: 20px; font-size: 22px;">{{ $review->star_rating }}⭐</span>
                                     </div>
                                 </div>
                                 <p>{{ $review->Comments }}</p>
@@ -246,17 +423,27 @@
                     </div>
                 </div>
             @endforeach
+
+            
+
+
+
+
               <!-- Pagination links -->
-              <div  class="mt-4 pt-2 col-lg-12 d-flex justify-content-center">
+              <div  class="mt-4 pt-2 col-lg-12 d-flex justify-content-center" >
                 {{ $reviews->links() }}
            </div>
           
+ 
+
+
         <!-- /#page-content-wrapper -->
       </div>
 
     </div>
 
-    
+  
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <Script>
@@ -267,5 +454,63 @@
             el.classList.toggle("toggled");
         };
     </Script>
+
+
+<script>
+  function calculateAmount() {
+      var basePrice = 10;
+      var petWeight = parseFloat($('#petWeight').val());
+      var startTime = new Date($('#StartTime').val());
+      var endTime = new Date($('#EndTime').val());
+      var numberOfDays = Math.ceil((endTime - startTime) / (1000 * 60 * 60 * 24));
+
+      // Get selected service types
+      var selectedServiceTypes = $('input[name="serviceTypes[]"]:checked').map(function(){
+          return $(this).val();
+      }).get();
+
+      // Disable conflicting checkboxes
+      if ($.inArray('pet boarding', selectedServiceTypes) !== -1) {
+          $('input[name="serviceTypes[]"][value="pet sitting"]').prop('disabled', true);
+      } else {
+          $('input[name="serviceTypes[]"][value="pet sitting"]').prop('disabled', false);
+      }
+
+      if ($.inArray('pet sitting', selectedServiceTypes) !== -1) {
+          $('input[name="serviceTypes[]"][value="pet boarding"]').prop('disabled', true);
+      } else {
+          $('input[name="serviceTypes[]"][value="pet boarding"]').prop('disabled', false);
+      }
+
+      // Iterate through selected service types
+      $.each(selectedServiceTypes, function(index, serviceType){
+          // Customize the logic based on each service type
+          switch (serviceType) {
+              case 'pet boarding':
+              case 'pet sitting':
+              case 'pet training':
+                  basePrice += 500 * numberOfDays; // Additional cost for each day of boarding, sitting, or training
+                  break;
+              case 'pet grooming':
+              case 'pet healthcare':
+                  basePrice += 500; // Additional cost for pet grooming or healthcare
+                  break;
+              // Add more cases as needed
+          }
+      });
+
+      if ($.inArray('pet sitting', selectedServiceTypes) !== -1) {
+          basePrice += 100; // Additional cost for transportation in pet sitting
+      }
+
+      var amount = basePrice + petWeight;
+
+      // Display the calculated amount in the read-only input field
+      $('#displayAmount').val(amount.toFixed(2) + ' PHP');
+  }
+
+  // Attach the calculateAmount function to relevant form elements
+  $('#petWeight, input[name="serviceTypes[]"], #StartTime, #EndTime').on('change', calculateAmount);
+</script>
 </body>
 </html>

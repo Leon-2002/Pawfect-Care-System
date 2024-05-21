@@ -31,7 +31,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
 </head>
+<style>
 
+</style>
 <body>
     <!-- Wrapper -->
 <div class="d-flex" id="wrapper">
@@ -45,12 +47,24 @@
 
             <div class="row">
                 <div class="col-lg-12">
+                    
+                    <div class="seven">
+                        <h1 style="text-align: center; margin-top: 20px;">Search for service provider</h2>
+                    </div>
+                    
 
+                      <form class="d-flex" action="{{ route('employee.search') }}" method="GET">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+                        
                     <!-- Employee list-->
                     <div class="candidate-list">
                         @if($employeelist->isEmpty())
-                            <h3>No service provider has accepted your booking request.</h3>
+                            <h3 style="text-align: center; margin-top: 20px;">No service provider  "{{$query}}" </h3>
                         @else
+                        
                             @foreach($employeelist as $employee)
                                 <div class="candidate-list-box card mt-4" style="border-radius: 20px;">
                                     <div class="p-4 card-body">
@@ -76,9 +90,8 @@
                                                     <span class="badge bg-soft-secondary fs-14 mt-1"></span><span class="badge bg-soft-secondary fs-14 mt-1"></span><span class="badge bg-soft-secondary fs-14 mt-1"></span>
                                                     <div class="profile">
                                                         <!-- Additional profile information -->
-                                                        <button type="button" class="btn btn-info btn-sm" >
-                                                            <a href="{{ route('service-provider.profile', ['id' => $employee->id]) }}">view Profile</a>
-                                                        </button>
+                                                        <a href="{{ route('service-provider.profile', ['id' => $employee->id]) }}"><button class="btn btn-outline-success">View Profile</button></a>
+                                                      
                                                             {{-- @if ($booking->payment_status == 'pending')
                                                                 {{-- <form method="post" action="{{ route('pay.booking', ['bookingId' => $booking->BookingID]) }}" style="display: inline;">
                                                                     @csrf

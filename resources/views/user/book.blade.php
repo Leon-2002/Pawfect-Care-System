@@ -48,8 +48,8 @@ body {
     
 
         <div class="container">
-    <div class="booking-form">
-        <h2 class="mb-4">Pet Service Booking</h2>
+    <div class="booking-form" style="border-radius: 5%">
+        <h2  class="mb-4" style="text-align: center; margin: 20px 0px;">Pet Service Random Booking</h2>
 
         <form method="post" action="/user/bookings/create">
             

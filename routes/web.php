@@ -169,8 +169,12 @@ Route::get('/service-providers/{id}', [EmployeeController::class, 'showProfile']
 
 
     // Personal Booking
-
     Route::get('/user/personalBooking', [PersonalBooking::class, 'getRandomEmployees'])->name('employee.list');
+    Route::post('/user/personalBooking/request', [PersonalBooking::class, 'submitBooking'])->name('booking.request');
+
+    // search bar in personal booking
+
+    Route::get('/employee/search', [PersonalBooking::class, 'search'])->name('employee.search');
 
 });
 

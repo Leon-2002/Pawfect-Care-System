@@ -86,7 +86,7 @@
      <!-- Sidebar -->
         <div class="" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="fas fa-user-secret me-2"></i>TempawCare</div>
+                    class="fas fa-paw"></i>  TempawCare</div>
             <div class="list-group list-group-flush my-3">
                 <a href="{{asset('/dashboard')}}" class=" list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-tachometer-alt me-2"></i>Home</a>
@@ -97,7 +97,7 @@
                         <a href="/user/bookings" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                             class="fas fa-book me-2"></i> Random booking</a>
                 <a href="/user/recent-Activity" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                class="fas fa-history me-2"></i>Recent Activity</a>
+                class="fas fa-history me-2"></i>History</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-comment-dots me-2"></i>Messages</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i

@@ -127,12 +127,21 @@ class BookingController extends Controller
         $city = auth()->user()->city; // Replace with the actual field used for the city
     
         // Fetch all bookings in the same city with their details
-        $bookingsInCity = Bookings::where('city', $city)
+        $employeeBookings = Bookings::where('city', $city)
         ->where('status', 'pending')       
         // ->where('StartTime', '>', now())
         ->paginate(10);
+
+
+        // Fetch all bookings in the same city with their details
+        $personalBooking = Bookings::where('EmployeeID', $employeeID)
+        ->where('status', 'pending')       
+        // ->where('StartTime', '>', now())
+        ->paginate(10);
+
         // You can pass $bookingsInCity to a view or process it as needed
-        return view('employee.customer')->with('employeeBookings', $bookingsInCity);
+        return view('employee.customer', compact('employeeBookings', 'personalBooking', ));
+
     }
 
 //     public function selectProvider($BookingID)
